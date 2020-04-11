@@ -1,0 +1,36 @@
+kind =kubernetes in docker
+Step 1: Intsall docker and kubectl in your desktop (centos/ubuntu etc.)
+
+Step 2: Download golang in your system
+1) Download the linux setup(cpoy the url)
+2) tar zxf go_file -C /usr/local
+3) ls /usr/local/go/bin
+4) export PATH=$PATH:/usr/local/go/bin
+5) which go
+
+Step 3: search for kubernetes kind(github repo: go down below)
+1) GO111MODULE="on" go get sigs.k8s.io/kind@v0.6.1 
+2) ls go/bin
+3) export PATH=$PATH:~/go/bin
+4) which kind (you can also  check the version)
+5) check the kind help
+
+Step 4: Create the cluster using kind (Single Node Cluster)
+1) kind create cluster
+2) kind get kubeconfig-path
+3) kubectl cluster-info
+4) docker ps
+5) kubectl get nodes
+
+Step 5: delete cluster
+1) kind delete cluster
+2) unset KUBECONFIG
+
+Step 6: Multi node Cluster(you can create as much as you can)
+1) go to name (the docs) in the kubernetes kind page
+2) create a xyz yaml in your pc and ready the cluster
+3) kind create cluster --config xyz.yaml(which you have created)
+
+Step 7: delete cluster
+1) kind delete cluster
+2) unset KUBECONFIG
