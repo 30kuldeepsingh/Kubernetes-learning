@@ -1,4 +1,4 @@
-Using:   kind_cluster, k8s:1.16.3, kind:v0.6.1, go:go1.14.2
+Using:   kind_cluster, k8s:1.15.0, kind:v0.4.0, go:go1.14.2
 
 Step 1: Install metallb in your k8s-cluster
 
