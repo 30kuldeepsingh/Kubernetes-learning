@@ -1,1 +1,31 @@
+First follow Installation of istio in your system.
+
+Step 1: Install Bookinfo samples
+1) Wherever you want to install bookinfo sample just ensure that namespace have labled i.e;
+   istio-injection=enabled
+2)kubectl label namespace default istio-injection=enabled
+
+Step 2: Deploy the sample applications
+1) kubectl apply -f samples/bookinfo/platform/kube/bookinfo.yaml (make sure you are in the istio dir. )
+2) kubectl get services
+3) kubectl get pods
+  
+Check if application is running:
+4) kubectl exec -it pod_name sh
+5) kubectl get svc (on master node)
+6) curl productpage:9080
+7) exit
+
+Step 3: Determining the ingress IP and port:
+1) kubectl -n istio-system get svc(check for igressgateway)
+ Create igress gateway from outside of the cluster
+2) kubectl apply -f samples/bookinfo/networking/bookinfo-gateway.yaml
+3) kubectl get gateway
+4) kubectl describe gateway bookinfo-gateway 
+5) check the external ip of ingress and port (access it from your browser)
+   ex: http://172.17.0.40/productpage
+6) refresh the page and you will find that reviews color is changing which means 
+   igressgateway routing you on multiple pages(round robin fn). 
+
+
 
