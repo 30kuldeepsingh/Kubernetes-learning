@@ -1,0 +1,23 @@
+Using:   kind_cluster, k8s:1.16.3, kind:v0.6.1, go:go1.14.2
+
+Step 1: Install metallb in your k8s-cluster
+
+Step 2: Download the latest realease istio
+1) follow the steps as mentioned in istio
+2) curl -L https://istio.io/downloadIstio | sh -
+3) cd istio-1.5.1
+4) mv istoctl /usr/local/bin
+5) which istioctl
+
+Step 2:Install istio
+
+For this installation, we use the demo configuration profile.
+It’s selected to have a good set of defaults for testing, 
+but there are other profiles for production or performance testing.
+
+1) istioctl manifest apply --set profile=demo
+
+Add a namespace label to instruct Istio to automatically inject 
+Envoy sidecar proxies when you deploy your application later:
+
+2) kubectl label namespace default istio-injection=enabled
