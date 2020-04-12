@@ -7,8 +7,9 @@ Step 1: Install Bookinfo samples
 
 Step 2: Deploy the sample applications
 1) kubectl apply -f samples/bookinfo/platform/kube/bookinfo.yaml (make sure you are in the istio dir. )
-2) kubectl get services
-3) kubectl get pods
+2) kubectl create -f samples/bookinfo/networking/destination-rule-all.yaml
+3) kubectl get services
+4) kubectl get pods
   
 Check if application is running:
 4) kubectl exec -it pod_name sh
