@@ -1,0 +1,22 @@
+Using:           kind_cluster, k8s:1.15.0, kind:v0.4.0, go:go1.14.2 ,helm :2.16.5 
+Description:     Monitor the istio cluster
+
+Step 1: Install itstio,bookinfo and metallb.
+
+Step 2: helm install install/kubernetes/helm/istio --name istio --namespace istio-system --set grafana.enabled=True
+        --set kiali.enabled=True
+
+Step 3: Accessing mode : First (Change type ClusterIP to NodePort)
+        kubectl -n istio-system get svc grafana
+        kubectl edit svc grafana -n istio-system
+        
+        Second: Port forwarding 
+        kubectl -n istio-system port-forward grafana-584949b9c6-4r2fr 3000:3000
+        localhost:3000 (in your web-browser)
+        
+Step 4: Create some Traffic :
+        watch curl -s -o /dev/null http://172.17.0.40/productpage (-s silent -o not bothered about the o/p)
+        
+      
+       
+        
